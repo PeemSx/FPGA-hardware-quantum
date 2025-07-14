@@ -3,8 +3,8 @@ module testbench;
     reg clk = 0;
     reg reset = 1;
 
-    reg signed [15:0] amp00_real = 128, amp00_imag = 0;
-    reg signed [15:0] amp01_real = 127, amp01_imag = 0;
+    reg signed [15:0] amp00_real = 23170, amp00_imag = 0;  // ≈ sqrt(0.5)
+    reg signed [15:0] amp01_real = 23170, amp01_imag = 0;
     reg signed [15:0] amp10_real = 0, amp10_imag = 0;
     reg signed [15:0] amp11_real = 0, amp11_imag = 0;
 
@@ -34,8 +34,8 @@ module testbench;
     initial begin
         #10 reset = 0;
 
-        for (i = 0; i < 8; i = i + 1)
-            #10;
+        for (i = 0; i < 256; i = i + 1)
+            #10; 
 
         $display("Measurement results:");
         $display("|00>: %d", result0);
